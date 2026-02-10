@@ -1,71 +1,62 @@
-html { scroll-behavior: smooth; }
-body { font-family: sans-serif; background-color: #fff; color: #333; margin: 0; line-height: 1.8; }
+/* --- ヘッダー部分の修正 --- */
 
-nav { position: sticky; top: 0; background: #fff; padding: 15px; z-index: 1000; border-bottom: 1px solid #eee; }
-nav ul { list-style: none; display: flex; justify-content: center; gap: 30px; margin: 0; padding: 0; }
-nav a { text-decoration: none; color: #888; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; }
+header {
+    text-align: center;
+    padding: 60px 0 20px; /* 上の余白を少し広げてゆとりを */
+}
 
-/* ヘッダーのレイアウト調整 */
-header { text-align: center; padding: 40px 0 20px; }
-.header-icon { margin-bottom: 10px; }
+header h1 {
+    font-size: 2.2rem;
+    margin: 0; /* 【重要】上下の余白をゼロにしてアイコンに近づける */
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+header h1 span {
+    display: block;
+    font-size: 0.35em;
+    color: #bbb;
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin: 5px 0 15px; /* 下に少しだけ余白を作ってアイコンとのバランスをとる */
+}
+
+.header-icon {
+    margin: 0 auto; /* 余分なマージンを削除 */
+}
+
 .header-icon img {
-    width: 150px;      /* 【サイズアップ】110pxから150pxへ */
+    width: 150px; /* サイズは良い感じとのことなので維持 */
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #f8f8f8;
+    border: 1px solid #eee;
+    padding: 5px;
+    background: #fff;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
-header h1 { font-size: 2.2rem; margin: 10px 0; letter-spacing: 4px; font-weight: bold; }
-header h1 span { display: block; font-size: 0.4em; color: #bbb; margin-top: 5px; letter-spacing: 2px; }
 
-main { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-h2 { text-align: center; letter-spacing: 4px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; margin-bottom: 40px; font-size: 1.1rem; }
+/* --- WORKSのカードデザイン（隙間なし維持） --- */
 
-/* プロフィール */
-.profile-text { text-align: center; margin-bottom: 40px; color: #555; }
-.profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-.profile-item { background: #fafafa; padding: 20px; border-radius: 12px; border: 1px solid #eee; }
-.profile-item h3 { font-size: 0.85rem; margin: 0 0 10px; font-weight: bold; display: flex; align-items: center; gap: 8px; }
-.profile-item p { font-size: 0.85rem; margin: 0; color: #666; }
-
-/* WORKS: 隙間ゼロの一体型カード */
-.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; }
 .video-item {
     display: flex;
     flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
 }
-.video-container {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%;
-    background: #000;
-    cursor: pointer;
-    display: block; /* 隙間防止 */
-}
-.thumb-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-.video-container:hover .thumb-img { opacity: 0.7; transform: scale(1.05); }
 
 .work-title {
-    font-size: 0.95rem;
-    font-weight: bold;
+    font-size: 0.9rem;
+    font-weight: 800;
     color: #333;
-    margin: 0; 
-    padding: 20px 15px;
+    margin: 0;
+    padding: 18px 15px;
     background-color: #fcfcfc;
     border: 1px solid #eee;
-    border-top: none; /* 動画との境界線を消す */
+    border-top: none;
+    margin-top: -1px; /* 隙間を物理的に消す */
     text-align: center;
-    /* 1px上に重ねて隙間を物理的に消す */
-    margin-top: -1px; 
 }
-
-/* SNS & CONTACT */
-.sns-links { text-align: center; margin-top: 30px; }
-.x-icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: #222; color: #fff; border-radius: 50%; text-decoration: none; }
-#contact { text-align: center; padding: 60px 20px; background: #f9f9f9; border-radius: 20px; margin-top: 40px; }
-.contact-btn { display: inline-block; margin-top: 20px; padding: 12px 35px; background: #000; color: #fff; text-decoration: none; border-radius: 30px; font-weight: bold; }
-footer { text-align: center; padding: 40px; color: #ccc; font-size: 0.7rem; }
