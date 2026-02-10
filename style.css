@@ -1,87 +1,154 @@
-body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: #111;
-    color: #fff;
-    margin: 0;
+/* 基本設定：白背景と薄い黒文字 */
+html {
+    scroll-behavior: smooth; /* スルスルとスクロールさせる設定 */
 }
 
-header { padding: 60px 20px; text-align: center; }
-header h1 { font-size: 2.5rem; margin: 0; }
-header h1 span { font-weight: 300; font-size: 0.4em; display: block; color: #888; letter-spacing: 2px; }
+body {
+    font-family: 'Helvetica Neue', Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+    background-color: #ffffff; /* 背景：白 */
+    color: #333333;           /* 文字：薄い黒 */
+    margin: 0;
+    line-height: 1.8;
+}
 
-main { max-width: 1100px; margin: 0 auto; padding: 20px; }
-h2 { border-bottom: 1px solid #333; padding-bottom: 10px; margin-top: 40px; }
+/* ページ上部のナビゲーション */
+header {
+    padding: 40px 20px;
+    text-align: center;
+}
 
-/* Xアイコンボタンのスタイル */
+nav {
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px 0;
+    z-index: 100;
+    border-bottom: 1px solid #eee;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #000;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-top: 60px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+header h1 span {
+    display: block;
+    font-size: 0.4em;
+    color: #999;
+    font-weight: 300;
+    margin-top: 5px;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 100px 0; /* セクション間の余白 */
+}
+
+h2 {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+/* SNSボタン：白背景に合うように調整 */
 .sns-links { margin-top: 20px; }
-
 .x-icon-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 44px;
     height: 44px;
-    background-color: #000;
+    background-color: #333;
     color: #fff;
-    border: 1px solid #444;
-    border-radius: 50%; /* 正円にする */
+    border-radius: 50%;
     text-decoration: none;
     font-size: 1.2rem;
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
-
 .x-icon-btn:hover {
-    background-color: #fff;
-    color: #000;
-    transform: translateY(-3px); /* 軽く浮き上がる */
+    background-color: #000;
+    transform: scale(1.1);
 }
 
-/* 動画グリッドのレイアウト修正 */
+/* ビデオエリア */
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 1つの幅を適切に保つ */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    margin-top: 30px;
-}
-
-.video-item {
-    width: 100%;
 }
 
 .video-container {
     position: relative;
-    width: 100%;
     aspect-ratio: 16 / 9;
-    background: #000;
-    border-radius: 12px;
+    background: #f0f0f0;
+    border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.thumb-img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
-.video-container:hover .thumb-img { opacity: 0.6; }
+.thumb-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.video-container:hover .thumb-img { transform: scale(1.05); }
 
 .play-button-overlay {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 3.5rem;
+    font-size: 3rem;
     color: #fff;
-    pointer-events: none;
+    opacity: 0.8;
 }
 
-.video-container iframe { width: 100%; height: 100%; border: none; }
-h3 { font-size: 0.95rem; margin-top: 12px; color: #ccc; font-weight: normal; }
+h3 { font-size: 0.9rem; margin-top: 15px; color: #444; font-weight: 600; }
 
 .no-video {
-    background: #222;
+    background: #f9f9f9;
     aspect-ratio: 16 / 9;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
-    color: #444;
-    border: 1px dashed #333;
+    border-radius: 8px;
+    color: #ccc;
+    border: 1px solid #eee;
 }
 
-footer { text-align: center; padding: 60px; color: #555; font-size: 0.8rem; }
+.email { font-weight: bold; color: #333; }
+
+footer {
+    text-align: center;
+    padding: 80px 0 40px;
+    color: #bbb;
+    font-size: 0.75rem;
+}
