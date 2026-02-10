@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mirai - Video Creator Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Mirai<span> - Video Creator</span></h1>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>動画編集者のMiraiです。MV、広告、Vlogなど、心に響く映像制作を得意としています。</p>
+        </section>
+
+        <section id="portfolio">
+            <h2>Works</h2>
+            <div class="video-grid">
+                <div class="video-item">
+                    <div class="video-container" id="video1" onclick="loadVideo('video1', 'k524WX5koA0')">
+                        <img src="https://img.youtube.com/vi/k524WX5koA0/maxresdefault.jpg" alt="サムネイル" class="thumb-img">
+                        <div class="play-button-overlay">▶</div>
+                    </div>
+                    <h3>ALGS Year6 公開トライアウト参加</h3>
+                </div>
+
+                <div class="video-item">
+                    <div class="no-video">
+                        <p>Next Video Coming Soon...</p>
+                    </div>
+                    <h3>作品タイトル 02</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mirai. Contact: example@mail.com</p>
+    </footer>
+
+    <script>
+        function loadVideo(containerId, videoId) {
+            const container = document.getElementById(containerId);
+            // クリックされたら、その場でiframe（動画）に書き換える
+            container.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            // クリックイベントを無効化（二重読み込み防止）
+            container.onclick = null;
+        }
+    </script>
+</body>
+</html>
