@@ -19,29 +19,33 @@ h2 { border-bottom: 1px solid #333; padding-bottom: 10px; margin-top: 40px; }
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    background-color: #000;      /* 背景は黒 */
-    color: #fff;               /* アイコンは白 */
-    border: 1px solid #444;    /* 薄い枠線 */
-    border-radius: 50%;        /* 円形にする */
+    width: 44px;
+    height: 44px;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 50%; /* 正円にする */
     text-decoration: none;
-    font-size: 1.5rem;
-    transition: 0.3s;
+    font-size: 1.2rem;
+    transition: 0.3s ease;
 }
 
 .x-icon-btn:hover {
-    background-color: #fff;    /* マウスを乗せると白黒反転 */
+    background-color: #fff;
     color: #000;
-    transform: scale(1.1);     /* 少し大きくする */
+    transform: translateY(-3px); /* 軽く浮き上がる */
 }
 
-/* ビデオエリア */
+/* 動画グリッドのレイアウト修正 */
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 1つの幅を適切に保つ */
+    gap: 30px;
     margin-top: 30px;
+}
+
+.video-item {
+    width: 100%;
 }
 
 .video-container {
@@ -56,16 +60,28 @@ h2 { border-bottom: 1px solid #333; padding-bottom: 10px; margin-top: 40px; }
 
 .thumb-img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
 .video-container:hover .thumb-img { opacity: 0.6; }
+
 .play-button-overlay {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: #fff;
     pointer-events: none;
 }
+
 .video-container iframe { width: 100%; height: 100%; border: none; }
-h3 { font-size: 1rem; margin-top: 15px; color: #ccc; }
-.no-video { background: #222; aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; border-radius: 12px; color: #444; }
+h3 { font-size: 0.95rem; margin-top: 12px; color: #ccc; font-weight: normal; }
+
+.no-video {
+    background: #222;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: #444;
+    border: 1px dashed #333;
+}
 
 footer { text-align: center; padding: 60px; color: #555; font-size: 0.8rem; }
