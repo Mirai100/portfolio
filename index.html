@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mirai - Video Creator Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
@@ -15,6 +16,12 @@
         <section id="about">
             <h2>About Me</h2>
             <p>動画編集者のMiraiです。MV、広告、Vlogなど、心に響く映像制作を得意としています。</p>
+            
+            <div class="sns-links">
+                <a href="https://x.com/mirai_zt" target="_blank" class="sns-btn x-btn">
+                    <i class="fa-brands fa-x-twitter"></i> Follow Me on X
+                </a>
+            </div>
         </section>
 
         <section id="portfolio">
@@ -39,15 +46,16 @@
     </main>
 
     <footer>
+        <div class="footer-sns">
+            <a href="https://x.com/mirai_zt" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
         <p>&copy; 2026 Mirai. Contact: example@mail.com</p>
     </footer>
 
     <script>
         function loadVideo(containerId, videoId) {
             const container = document.getElementById(containerId);
-            // クリックされたら、その場でiframe（動画）に書き換える
             container.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-            // クリックイベントを無効化（二重読み込み防止）
             container.onclick = null;
         }
     </script>

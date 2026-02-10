@@ -1,3 +1,5 @@
+/* --- 既存のスタイルを維持しつつ、以下を追加・上書きしてください --- */
+
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     background-color: #111;
@@ -12,6 +14,33 @@ header h1 span { font-weight: 300; font-size: 0.4em; display: block; color: #888
 main { max-width: 1100px; margin: 0 auto; padding: 20px; }
 h2 { border-bottom: 1px solid #333; padding-bottom: 10px; margin-top: 40px; }
 
+/* SNSボタンのスタイル */
+.sns-links {
+    margin-top: 20px;
+}
+
+.sns-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.x-btn {
+    background-color: #fff;
+    color: #000;
+}
+
+.x-btn:hover {
+    background-color: #ccc;
+    transform: translateY(-3px);
+}
+
+/* 動画エリア（前回のまま） */
 .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -19,7 +48,6 @@ h2 { border-bottom: 1px solid #333; padding-bottom: 10px; margin-top: 40px; }
     margin-top: 30px;
 }
 
-/* 動画の枠 */
 .video-container {
     position: relative;
     width: 100%;
@@ -30,7 +58,6 @@ h2 { border-bottom: 1px solid #333; padding-bottom: 10px; margin-top: 40px; }
     cursor: pointer;
 }
 
-/* サムネイル画像 */
 .thumb-img {
     width: 100%;
     height: 100%;
@@ -40,10 +67,8 @@ h2 { border-bottom: 1px solid #333; padding-bottom: 10px; margin-top: 40px; }
 
 .video-container:hover .thumb-img {
     opacity: 0.6;
-    transform: scale(1.05);
 }
 
-/* 真ん中の再生ボタン */
 .play-button-overlay {
     position: absolute;
     top: 50%; left: 50%;
@@ -53,23 +78,24 @@ h2 { border-bottom: 1px solid #333; padding-bottom: 10px; margin-top: 40px; }
     pointer-events: none;
 }
 
-/* 動画本体(iframe)の設定 */
-.video-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
+.video-container iframe { width: 100%; height: 100%; border: none; }
 
 h3 { font-size: 1rem; margin-top: 15px; color: #ccc; }
 
-.no-video {
-    background: #222;
-    aspect-ratio: 16 / 9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    color: #444;
+/* フッターのSNSアイコン */
+footer { text-align: center; padding: 60px; color: #555; font-size: 0.8rem; }
+
+.footer-sns {
+    margin-bottom: 15px;
 }
 
-footer { text-align: center; padding: 60px; color: #555; font-size: 0.8rem; }
+.footer-sns a {
+    color: #888;
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+
+.footer-sns a:hover {
+    color: #fff;
+}
