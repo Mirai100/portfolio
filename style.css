@@ -1,115 +1,97 @@
-html { scroll-behavior: smooth; }
+/* --- 背景設定（ここを一番上に！） --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
 
 body {
     font-family: sans-serif;
     color: #333;
-    margin: 0;
     line-height: 1.8;
-    background-color: #fff;
+    background-color: #ffffff;
     position: relative;
     overflow-x: hidden;
 }
 
-/* ふんわり動く背景の仕組み */
+/* ふんわり動く背景（絶対に背面に配置） */
 body::before,
 body::after {
     content: "";
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     z-index: -1;
-    opacity: 0.4;
-    filter: blur(80px);
+    opacity: 0.5; /* 少し濃くしました */
+    filter: blur(60px);
     pointer-events: none;
 }
 
 body::before {
-    background: radial-gradient(circle at 20% 30%, #e0f2ff 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, #f3e5f5 0%, transparent 50%);
+    background: radial-gradient(circle at 10% 20%, #e0f2ff 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, #f3e5f5 0%, transparent 40%);
     animation: moveGradient1 15s ease-in-out infinite alternate;
 }
 
 body::after {
-    background: radial-gradient(circle at 70% 20%, #fff9e6 0%, transparent 50%),
-                radial-gradient(circle at 30% 80%, #e8f5e9 0%, transparent 50%);
+    background: radial-gradient(circle at 80% 10%, #fff9e6 0%, transparent 40%),
+                radial-gradient(circle at 20% 90%, #e8f5e9 0%, transparent 40%);
     animation: moveGradient2 20s ease-in-out infinite alternate-reverse;
 }
 
 @keyframes moveGradient1 {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(5%, 10%) scale(1.1); }
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(3%, 5%); }
 }
 
 @keyframes moveGradient2 {
-    0% { transform: translate(0, 0) scale(1.1); }
-    100% { transform: translate(-5%, -10%) scale(1); }
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-3%, -5%); }
 }
 
-/* ナビゲーション */
-nav { position: sticky; top: 0; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); padding: 15px; z-index: 1000; border-bottom: 1px solid #eee; }
-nav ul { list-style: none; display: flex; justify-content: center; gap: 30px; margin: 0; padding: 0; }
-nav a { text-decoration: none; color: #888; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; }
-
-/* ヘッダー */
+/* --- ヘッダー・名前（ここをパキッとさせる） --- */
 header { text-align: center; padding: 60px 0 20px; position: relative; z-index: 1; }
-header h1 { font-size: 2.2rem; margin: 0; letter-spacing: 6px; text-transform: uppercase; font-weight: 700; }
-header h1 span { display: block; font-size: 0.35em; color: #bbb; font-weight: 400; letter-spacing: 3px; margin: 5px 0 10px; }
+
+header h1 {
+    font-size: 2.2rem;
+    margin: 0;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-weight: 800; /* さらに太く */
+    color: #000 !important; /* 絶対に真っ黒にする */
+}
+
+header h1 span {
+    display: block;
+    font-size: 0.35em;
+    color: #666; /* 以前より濃く */
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin: 5px 0 10px;
+}
+
+/* --- ナビ・コンテンツ（透過させて背景を見せる） --- */
+nav { position: sticky; top: 0; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); padding: 15px; z-index: 1000; border-bottom: 1px solid #eee; }
+nav ul { list-style: none; display: flex; justify-content: center; gap: 30px; margin: 0; padding: 0; }
+nav a { text-decoration: none; color: #444; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; }
 
 .header-icon img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid #eee;
-    padding: 5px;
-    background: #fff;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
+    border: 2px solid #fff; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 main { max-width: 1000px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
-h2 { text-align: center; letter-spacing: 4px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; margin-bottom: 40px; font-size: 1.1rem; }
+h2 { text-align: center; letter-spacing: 4px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 15px; margin-bottom: 40px; font-size: 1.1rem; color: #000; }
 
-/* プロフィール */
-.profile-text { text-align: center; margin-bottom: 40px; color: #555; }
-.profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 40px; }
-.profile-item { background: rgba(250, 250, 250, 0.7); backdrop-filter: blur(5px); padding: 20px; border-radius: 12px; border: 1px solid #eee; }
-.profile-item h3 { font-size: 0.85rem; margin: 0 0 10px; font-weight: bold; display: flex; align-items: center; gap: 8px; }
-.profile-item p { font-size: 0.85rem; margin: 0; color: #666; }
-
-/* WORKS: 隙間なしカード */
-.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; }
-.video-item { display: flex; flex-direction: column; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: 0.3s; background: #fff; }
-.video-item:hover { transform: translateY(-5px); }
-.video-container { position: relative; width: 100%; padding-top: 56.25%; background: #000; cursor: pointer; display: block; }
-.thumb-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-.video-container:hover .thumb-img { opacity: 0.7; transform: scale(1.05); }
-.play-button-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 3.5rem; color: #fff; opacity: 0.9; z-index: 10; pointer-events: none; }
-
-.work-title {
-    font-size: 0.9rem; font-weight: 800; color: #333;
-    margin: 0; padding: 18px 15px; background-color: #fcfcfc;
-    border: 1px solid #eee; border-top: none;
-    text-align: center; margin-top: -1px;
-}
+.profile-item { background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px; border: 1px solid #eee; }
+.video-item { display: flex; flex-direction: column; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: 0.3s; background: #fff; }
+.work-title { font-size: 0.9rem; font-weight: 800; color: #000; margin: 0; padding: 18px 15px; background-color: #fcfcfc; border: 1px solid #eee; border-top: none; text-align: center; margin-top: -1px; }
 
 /* CONTACT */
-#contact { padding: 80px 20px; text-align: center; }
-.contact-container { max-width: 700px; margin: 0 auto; }
-.contact-desc { font-size: 0.9rem; color: #666; margin-bottom: 40px; }
-.contact-btns { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-.contact-link-btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-    padding: 18px 35px; text-decoration: none; font-weight: bold; font-size: 0.95rem;
-    border-radius: 50px; transition: all 0.3s ease; min-width: 260px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
-.email-btn { background-color: #fff; color: #333; border: 1px solid #eee; }
-.email-btn:hover { background-color: #f9f9f9; transform: translateY(-3px); }
-.x-btn { background-color: #000; color: #fff; border: 1px solid #000; }
-.x-btn:hover { background-color: #333; transform: translateY(-3px); }
+.contact-link-btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 18px 35px; text-decoration: none; font-weight: bold; font-size: 0.95rem; border-radius: 50px; transition: 0.3s; min-width: 260px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+.email-btn { background-color: #fff; color: #000; border: 1px solid #eee; }
+.x-btn { background-color: #000; color: #fff; }
 
-footer { text-align: center; padding: 60px 0 40px; color: #ccc; font-size: 0.7rem; }
-
-@media (max-width: 600px) { .contact-link-btn { width: 100%; } }
+footer { text-align: center; padding: 60px 0 40px; color: #888; font-size: 0.7rem; }
