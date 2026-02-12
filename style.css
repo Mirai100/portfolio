@@ -1,14 +1,13 @@
-/* --- 背景アニメーション設定 --- */
+/* --- 背景アニメーション --- */
 #bg-animation {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -2;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
     overflow: hidden;
-    pointer-events: none;
-    background-color: #fff;
+    background: #fff;
 }
 
 .blob {
@@ -16,7 +15,7 @@
     width: 600px;
     height: 600px;
     filter: blur(80px);
-    opacity: 0.5;
+    opacity: 0.4;
     border-radius: 50%;
 }
 
@@ -27,22 +26,16 @@
 
 @keyframes float {
     0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(60px, 120px) scale(1.1); }
+    100% { transform: translate(60px, 100px) scale(1.1); }
 }
 
 /* --- 基本設定 --- */
-html, body {
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-}
-
+html { scroll-behavior: smooth; }
 body {
     font-family: sans-serif;
     color: #333;
+    margin: 0;
     line-height: 1.8;
-    position: relative;
-    overflow-x: hidden;
 }
 
 /* --- ナビゲーション --- */
@@ -50,29 +43,29 @@ nav {
     position: sticky;
     top: 0;
     background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 15px;
     z-index: 1000;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid #eee;
 }
 nav ul { list-style: none; display: flex; justify-content: center; gap: 30px; margin: 0; padding: 0; }
-nav a { text-decoration: none; color: #666; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; }
+nav a { text-decoration: none; color: #888; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; }
 
 /* --- ヘッダー・名前 --- */
-header { text-align: center; padding: 70px 0 20px; }
+header { text-align: center; padding: 60px 0 20px; }
 header h1 {
     font-size: 2.2rem;
     margin: 0;
     letter-spacing: 6px;
     text-transform: uppercase;
     font-weight: 800;
-    color: #000 !important;
+    color: #000 !important; /* 真っ黒 */
 }
 header h1 span {
     display: block;
     font-size: 0.35em;
-    color: #666;
+    color: #666; /* Video Creator */
     font-weight: 600;
     letter-spacing: 3px;
     margin: 5px 0 10px;
@@ -90,14 +83,32 @@ header h1 span {
 
 /* --- コンテンツ --- */
 main { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-h2 { text-align: center; letter-spacing: 4px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 15px; margin: 60px 0 40px; font-size: 1.1rem; color: #000; }
+h2 { text-align: center; letter-spacing: 4px; border-bottom: 1px solid #eee; padding-bottom: 15px; margin: 60px 0 40px; font-size: 1.1rem; color: #000; }
 
-.profile-item { background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px; border: 1px solid #eee; }
-.video-item { display: flex; flex-direction: column; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: 0.3s; background: #fff; }
-.work-title { font-size: 0.9rem; font-weight: 800; color: #000; margin: 0; padding: 18px 15px; background-color: #fff; border: 1px solid #eee; border-top: none; text-align: center; margin-top: -1px; }
+.profile-text { text-align: center; margin-bottom: 40px; color: #555; }
+.profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.profile-item { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(5px); padding: 20px; border-radius: 12px; border: 1px solid #eee; }
+.profile-item h3 { font-size: 0.85rem; margin: 0 0 10px; font-weight: bold; display: flex; align-items: center; gap: 8px; color: #000; }
 
-/* --- CONTACT --- */
-.contact-btns { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
+/* WORKS: 隙間なし */
+.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; }
+.video-item { display: flex; flex-direction: column; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: 0.3s; background: #fff; }
+.video-item:hover { transform: translateY(-5px); }
+.video-container { position: relative; width: 100%; padding-top: 56.25%; background: #000; cursor: pointer; }
+.thumb-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.video-container:hover .thumb-img { opacity: 0.7; transform: scale(1.05); }
+.play-button-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 3.5rem; color: #fff; opacity: 0.9; z-index: 10; pointer-events: none; }
+
+.work-title {
+    font-size: 0.9rem; font-weight: 800; color: #000;
+    margin: 0; padding: 18px 15px; background-color: #fff;
+    border: 1px solid #eee; border-top: none;
+    text-align: center; margin-top: -1px;
+}
+
+/* CONTACT ボタン */
+.contact-container { text-align: center; padding-bottom: 40px; }
+.contact-btns { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
 .contact-link-btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 12px;
     padding: 18px 35px; text-decoration: none; font-weight: bold; font-size: 0.95rem;
@@ -107,4 +118,6 @@ h2 { text-align: center; letter-spacing: 4px; border-bottom: 1px solid rgba(0,0,
 .email-btn { background-color: #fff; color: #000; border: 1px solid #eee; }
 .x-btn { background-color: #000; color: #fff; }
 
-footer { text-align: center; padding: 60px 0 40px; color: #aaa; font-size: 0.7rem; }
+footer { text-align: center; padding: 60px 0 40px; color: #bbb; font-size: 0.7rem; }
+
+@media (max-width: 600px) { .contact-link-btn { width: 100%; } }
