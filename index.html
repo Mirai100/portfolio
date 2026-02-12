@@ -1,96 +1,18 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mirai - Video Creator Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#profile">PROFILE</a></li>
-                <li><a href="#works">WORKS</a></li>
-                <li><a href="#contact">CONTACT</a></li>
-            </ul>
-        </nav>
-        <div class="header-content">
-            <h1>Mirai<span>Video Creator</span></h1>
-            <div class="header-icon">
-                <img src="profile-icon.png" alt="Mirai's Icon" onerror="this.style.display='none'">
-            </div>
+<section id="contact">
+    <h2>CONTACT</h2>
+    <div class="contact-container">
+        <p class="contact-desc">
+            お仕事のご依頼やご相談は、下記よりお気軽にご連絡ください。
+        </p>
+        <div class="contact-btns">
+            <a href="mailto:mri.vsp.361@gmail.com" class="contact-link-btn email-btn">
+                <i class="fa-regular fa-envelope"></i>
+                <span>メールで相談する</span>
+            </a>
+            <a href="https://x.com/mirai_zt" target="_blank" class="contact-link-btn x-btn">
+                <i class="fa-brands fa-x-twitter"></i>
+                <span>X(Twitter)から相談する</span>
+            </a>
         </div>
-    </header>
-
-    <main>
-        <section id="profile">
-            <h2>PROFILE</h2>
-            <div class="profile-text">
-                <p>動画クリエイターとして活動している<strong>Mirai</strong>です。<br>
-                切り抜き動画、MVなど、個人勢の方から企業様まで、幅広くの動画編集を担当させていただいております。</p>
-            </div>
-
-            <div class="profile-grid">
-                <div class="profile-item"><h3><i class="fa-solid fa-laptop-code"></i> 使用ソフト</h3><p>Adobe Premiere / Photoshop / After Effects</p></div>
-                <div class="profile-item"><h3><i class="fa-solid fa-calendar-check"></i> 納期目安</h3><p>横動画：2〜3日 / ショート：即日〜2日</p></div>
-                <div class="profile-item"><h3><i class="fa-solid fa-file-export"></i> 納品方法</h3><p>Googleドライブ / ギガファイル便</p></div>
-                <div class="profile-item"><h3><i class="fa-solid fa-copyright"></i> クレジット</h3><p>効果音ラボ / いらすとや / イラストAC</p></div>
-            </div>
-        </section>
-
-        <section id="works">
-            <h2>WORKS</h2>
-            <div class="video-grid">
-                <div class="video-item">
-                    <div class="video-container" id="video1" onclick="loadVideo('video1', 'k524WX5koA0')">
-                        <img src="https://img.youtube.com/vi/k524WX5koA0/maxresdefault.jpg" alt="作品01" class="thumb-img">
-                        <div class="play-button-overlay">▶</div>
-                    </div>
-                    <h3 class="work-title">ALGS Year6 公開トライアウト参加</h3>
-                </div>
-
-                <div class="video-item">
-                    <div class="video-container" id="video2" onclick="loadVideo('video2', 'w_RoFztFqQY')">
-                        <img src="https://img.youtube.com/vi/w_RoFztFqQY/maxresdefault.jpg" alt="作品02" class="thumb-img">
-                        <div class="play-button-overlay">▶</div>
-                    </div>
-                    <h3 class="work-title">シロイチ様_歌ってみた</h3>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>CONTACT</h2>
-            <div class="contact-container">
-                <p class="contact-desc">
-                    お仕事のご依頼やご相談は、下記メールアドレスまたはX(Twitter)のDMよりお気軽にご連絡ください。
-                </p>
-                <div class="contact-links">
-                    <div class="contact-item">
-                        <i class="fa-regular fa-envelope"></i>
-                        <p class="contact-label">Email</p>
-                        <a href="mailto:mri.vsp.361@gmail.com" class="contact-value">mri.vsp.361@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fa-brands fa-x-twitter"></i>
-                        <p class="contact-label">X (Twitter)</p>
-                        <a href="https://x.com/mirai_zt" target="_blank" class="contact-value">@mirai_zt</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer><p>&copy; 2026 Mirai.</p></footer>
-
-    <script>
-        function loadVideo(containerId, videoId) {
-            const container = document.getElementById(containerId);
-            container.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>`;
-            container.onclick = null;
-        }
-    </script>
-</body>
-</html>
+    </div>
+</section>
