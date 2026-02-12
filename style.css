@@ -1,79 +1,66 @@
-/* --- CONTACT: ボタン形式に修正 --- */
+html { scroll-behavior: smooth; }
+body { font-family: sans-serif; background-color: #fff; color: #333; margin: 0; line-height: 1.8; }
 
-#contact {
-    padding: 80px 20px;
-    text-align: center;
+nav { position: sticky; top: 0; background: #fff; padding: 15px; z-index: 1000; border-bottom: 1px solid #eee; }
+nav ul { list-style: none; display: flex; justify-content: center; gap: 30px; margin: 0; padding: 0; }
+nav a { text-decoration: none; color: #888; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; }
+
+header { text-align: center; padding: 60px 0 20px; }
+header h1 { font-size: 2.2rem; margin: 0; letter-spacing: 6px; text-transform: uppercase; font-weight: 700; }
+header h1 span { display: block; font-size: 0.35em; color: #bbb; font-weight: 400; letter-spacing: 3px; margin: 5px 0 10px; }
+
+.header-icon img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #eee;
+    padding: 5px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.contact-container {
-    max-width: 700px;
-    margin: 0 auto;
+main { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+h2 { text-align: center; letter-spacing: 4px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; margin-bottom: 40px; font-size: 1.1rem; }
+
+.profile-text { text-align: center; margin-bottom: 40px; color: #555; }
+.profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 40px; }
+.profile-item { background: #fafafa; padding: 20px; border-radius: 12px; border: 1px solid #eee; }
+.profile-item h3 { font-size: 0.85rem; margin: 0 0 10px; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+.profile-item p { font-size: 0.85rem; margin: 0; color: #666; }
+
+/* WORKS: 隙間なし */
+.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; }
+.video-item { display: flex; flex-direction: column; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: 0.3s; }
+.video-item:hover { transform: translateY(-5px); }
+.video-container { position: relative; width: 100%; padding-top: 56.25%; background: #000; cursor: pointer; display: block; }
+.thumb-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.video-container:hover .thumb-img { opacity: 0.7; transform: scale(1.05); }
+.play-button-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 3.5rem; color: #fff; opacity: 0.9; z-index: 10; pointer-events: none; }
+
+.work-title {
+    font-size: 0.9rem; font-weight: 800; color: #333;
+    margin: 0; padding: 18px 15px; background-color: #fcfcfc;
+    border: 1px solid #eee; border-top: none;
+    text-align: center; margin-top: -1px;
 }
 
-.contact-desc {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 40px;
-}
-
-/* ボタンを並べるエリア */
-.contact-btns {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap; /* スマホで縦に並ぶように */
-}
-
-/* ボタンの共通デザイン */
+/* CONTACT: ボタン形式 */
+#contact { padding: 80px 20px; text-align: center; }
+.contact-container { max-width: 700px; margin: 0 auto; }
+.contact-desc { font-size: 0.9rem; color: #666; margin-bottom: 40px; }
+.contact-btns { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
 .contact-link-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 18px 35px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.95rem;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    min-width: 260px; /* ボタンの幅を揃える */
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    padding: 18px 35px; text-decoration: none; font-weight: bold; font-size: 0.95rem;
+    border-radius: 50px; transition: all 0.3s ease; min-width: 260px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
+.email-btn { background-color: #fff; color: #333; border: 1px solid #eee; }
+.email-btn:hover { background-color: #f9f9f9; transform: translateY(-3px); }
+.x-btn { background-color: #000; color: #fff; border: 1px solid #000; }
+.x-btn:hover { background-color: #333; transform: translateY(-3px); }
 
-/* メールボタンの色設定 */
-.email-btn {
-    background-color: #fff;
-    color: #333;
-    border: 1px solid #eee;
-}
+footer { text-align: center; padding: 60px 0 40px; color: #ccc; font-size: 0.7rem; }
 
-.email-btn:hover {
-    background-color: #f9f9f9;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-}
-
-/* Xボタンの色設定（黒基調） */
-.x-btn {
-    background-color: #000;
-    color: #fff;
-    border: 1px solid #000;
-}
-
-.x-btn:hover {
-    background-color: #333;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-}
-
-/* アイコンのサイズ微調整 */
-.contact-link-btn i {
-    font-size: 1.2rem;
-}
-
-/* スマホ対応：幅がいっぱいになるように */
-@media (max-width: 600px) {
-    .contact-link-btn {
-        width: 100%;
-    }
-}
+@media (max-width: 600px) { .contact-link-btn { width: 100%; } }
