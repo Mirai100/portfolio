@@ -1,44 +1,44 @@
-/* --- 基本設定と静的な背景色 --- */
+/* --- 全体設定 --- */
 html { scroll-behavior: smooth; }
 body {
     font-family: sans-serif;
     color: #333;
     margin: 0;
     line-height: 1.8;
-    background-color: #eef7ff; /* ベースの薄い青 */
+    background-color: #eef7ff; /* 指定の背景色 */
     position: relative;
-    overflow-x: hidden;
+    overflow-x: hidden; /* 背景の丸がはみ出しても横スクロールを出さない */
 }
 
-/* --- 背景のいびつな丸（スクロールで動くパララックス風） --- */
+/* --- スクロールで流れる「いびつな丸」 --- */
 body::before, body::after {
     content: "";
-    position: absolute; /* absoluteにすることで、スクロールに合わせて移動します */
+    position: absolute;
     z-index: -1;
     pointer-events: none;
-    filter: blur(60px);
+    filter: blur(50px);
 }
 
-/* 1つ目の大きな丸（上の方） */
+/* 1つ目の丸（ページ上部） */
 body::before {
-    top: 5%;
-    left: -10%;
-    width: 80vw;
-    height: 80vw;
+    top: 50px;
+    left: -150px;
+    width: 600px;
+    height: 600px;
     background: radial-gradient(circle, #d4ebff 0%, transparent 70%);
     border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
-/* 2つ目の大きな丸（下の方：CONTACT付近） */
+/* 2つ目の丸（ページ中部〜下部） */
 body::after {
-    top: 60%; /* ページの中盤以降に配置 */
-    right: -15%;
-    width: 70vw;
-    height: 70vw;
+    top: 1200px; /* スクロールしていくと出会う位置 */
+    right: -100px;
+    width: 500px;
+    height: 500px;
     background: radial-gradient(circle, #fffde7 0%, transparent 70%);
     border-radius: 60% 40% 30% 70% / 50% 30% 70% 40%;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 /* --- ナビゲーション --- */
@@ -46,70 +46,64 @@ nav {
     position: sticky; top: 0; z-index: 1000;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
-    padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding: 15px; border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 nav ul { list-style: none; display: flex; justify-content: center; gap: 30px; margin: 0; padding: 0; }
-nav a { text-decoration: none; color: #666; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; }
+nav a { text-decoration: none; color: #888; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; }
 
 /* --- ヘッダー --- */
-header { text-align: center; padding: 80px 0 40px; position: relative; z-index: 1; }
+header { text-align: center; padding: 60px 0 20px; position: relative; }
 header h1 {
-    font-size: 2.3rem; margin: 0; letter-spacing: 6px;
-    text-transform: uppercase; font-weight: 900; color: #000;
+    font-size: 2.2rem; margin: 0; letter-spacing: 6px;
+    text-transform: uppercase; font-weight: 800; color: #000;
 }
 header h1 span {
     display: block; font-size: 0.35em; color: #666;
-    font-weight: 600; letter-spacing: 3px; margin: 8px 0 15px;
+    font-weight: 600; letter-spacing: 3px; margin: 5px 0 10px;
 }
 .header-icon img {
     width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
-    border: 4px solid #fff; box-shadow: 0 10px 25px rgba(149, 173, 203, 0.2);
+    border: 3px solid #fff; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* --- プロフィールの囲み枠（おしゃれな四角） --- */
-main { max-width: 1000px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
-h2 { text-align: center; letter-spacing: 4px; padding-bottom: 15px; margin: 80px 0 40px; font-size: 1.2rem; color: #000; position: relative; }
-h2::after {
-    content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-    width: 50px; height: 3px; background: #d4ebff; border-radius: 3px;
-}
+/* --- プロフィールの四角いカード --- */
+main { max-width: 1000px; margin: 0 auto; padding: 0 20px; position: relative; }
+h2 { text-align: center; letter-spacing: 4px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 15px; margin: 60px 0 40px; font-size: 1.1rem; color: #000; }
 
 .profile-card {
-    background: rgba(255, 255, 255, 0.7); /* 白い背景 */
+    background: rgba(255, 255, 255, 0.8); /* 少し透明な白 */
     backdrop-filter: blur(10px);
-    padding: 50px 40px;
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(149, 173, 203, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     color: #444;
 }
 
 .profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-.profile-item {
-    background: rgba(255, 255, 255, 0.85);
-    padding: 25px; border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 5px 15px rgba(149, 173, 203, 0.1);
-}
-.profile-item h3 { font-size: 0.9rem; margin: 0 0 12px; font-weight: bold; display: flex; align-items: center; gap: 10px; color: #000; }
+.profile-item { background: rgba(255, 255, 255, 0.7); padding: 20px; border-radius: 12px; border: 1px solid #eee; }
+.profile-item h3 { font-size: 0.85rem; margin: 0 0 10px; font-weight: bold; display: flex; align-items: center; gap: 8px; color: #000; }
 
 /* --- WORKS & CONTACT --- */
 .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; }
-.video-item { display: flex; flex-direction: column; border-radius: 18px; overflow: hidden; box-shadow: 0 10px 25px rgba(149, 173, 203, 0.15); transition: 0.3s; background: #fff; }
-.video-item:hover { transform: translateY(-8px); }
-.work-title { font-size: 0.95rem; font-weight: 800; color: #000; margin: 0; padding: 20px 15px; background-color: #fff; text-align: center; }
+.video-item { display: flex; flex-direction: column; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: 0.3s; background: #fff; }
+.video-item:hover { transform: translateY(-5px); }
+.video-container { position: relative; width: 100%; padding-top: 56.25%; background: #000; cursor: pointer; }
+.thumb-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.work-title { font-size: 0.9rem; font-weight: 800; color: #000; margin: 0; padding: 18px 15px; background-color: #fff; text-align: center; }
 
-.contact-container { text-align: center; padding: 40px 0 80px; }
-.contact-btns { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
+.contact-container { text-align: center; padding-bottom: 40px; }
+.contact-btns { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
 .contact-link-btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-    padding: 20px 40px; text-decoration: none; font-weight: bold; font-size: 1rem;
-    border-radius: 50px; transition: 0.3s; min-width: 280px;
-    box-shadow: 0 10px 20px rgba(149, 173, 203, 0.2);
+    padding: 18px 35px; text-decoration: none; font-weight: bold; font-size: 0.95rem;
+    border-radius: 50px; transition: 0.3s; min-width: 260px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-.email-btn { background-color: #fff; color: #000; border: 1px solid #d4ebff; }
+.email-btn { background-color: #fff; color: #000; border: 1px solid #eee; }
 .x-btn { background-color: #000; color: #fff; }
 
-footer { text-align: center; padding
+footer { text-align: center; padding: 60px 0 40px; color: #aaa; font-size: 0.7rem; }
+@media (max-width: 600px) { .contact-link-btn { width: 100%; } }
