@@ -1,108 +1,139 @@
-/* --- 基本設定 --- */
+/* --- デザインの基盤 --- */
 html { scroll-behavior: smooth; }
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    color: #333;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #222;
     margin: 0;
     line-height: 1.8;
-    background-color: #eef7ff; /* 背景のベースカラー */
+    background-color: #eef7ff;
     position: relative;
     overflow-x: hidden;
-    min-height: 100vh;
+    letter-spacing: 0.03em;
 }
 
-/* --- スクロールで流れる「いびつな丸」 --- */
+/* --- パララックス背景 --- */
 body::before, body::after {
     content: "";
     position: absolute;
     z-index: -1;
     pointer-events: none;
-    filter: blur(60px); /* ぼかしを少し弱めて形を見せる */
+    filter: blur(80px);
 }
-
-/* 1つ目の丸（上部：少し濃いめの水色） */
 body::before {
-    top: 50px;
-    left: -100px;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, #b3d9ff 0%, transparent 75%);
-    border-radius: 43% 57% 70% 30% / 40% 50% 60% 50%;
-    opacity: 0.8;
+    top: 5%; left: -10%; width: 600px; height: 600px;
+    background: radial-gradient(circle, #b3d9ff 0%, transparent 70%);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    opacity: 0.6;
 }
-
-/* 2つ目の丸（中部〜下部：少し暖色を混ぜてアクセントに） */
 body::after {
-    top: 800px; /* スクロールすると出てくる位置 */
-    right: -100px;
-    width: 600px;
-    height: 600px;
+    top: 50%; right: -10%; width: 500px; height: 500px;
     background: radial-gradient(circle, #ffecc7 0%, transparent 70%);
     border-radius: 60% 40% 30% 70% / 50% 30% 70% 40%;
-    opacity: 0.6;
+    opacity: 0.4;
 }
 
 /* --- ナビゲーション --- */
 nav {
     position: sticky; top: 0; z-index: 1000;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    padding: 15px; border-bottom: 1px solid rgba(0,0,0,0.05);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
-nav ul { list-style: none; display: flex; justify-content: center; gap: 30px; margin: 0; padding: 0; }
-nav a { text-decoration: none; color: #777; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; }
+nav ul { list-style: none; display: flex; justify-content: center; gap: 40px; margin: 0; padding: 0; }
+nav a {
+    text-decoration: none; color: #555; font-weight: 700; font-size: 0.75rem;
+    text-transform: uppercase; letter-spacing: 0.2em; transition: 0.3s;
+}
+nav a:hover { color: #000; }
 
 /* --- ヘッダー --- */
-header { text-align: center; padding: 60px 0 20px; }
-header h1 {
-    font-size: 2.2rem; margin: 0; letter-spacing: 6px;
-    text-transform: uppercase; font-weight: 800; color: #000 !important;
+header { text-align: center; padding: 100px 0 60px; }
+.sub-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; color: #666; margin-bottom: 0; font-size: 1rem;
 }
-header h1 span {
-    display: block; font-size: 0.35em; color: #666;
-    font-weight: 600; letter-spacing: 3px; margin: 5px 0 10px;
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem; margin: 0; font-weight: 700; color: #000;
+    line-height: 1; letter-spacing: -0.02em;
 }
 .header-icon img {
-    width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
-    border: 3px solid #fff; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 140px; height: 140px; border-radius: 50%; object-fit: cover;
+    margin-top: 30px; border: 5px solid #fff;
+    box-shadow: 0 15px 35px rgba(149, 173, 203, 0.3);
 }
 
-/* --- プロフィールカード（おしゃれな四角） --- */
-main { max-width: 1000px; margin: 0 auto; padding: 0 20px; position: relative; }
-h2 { text-align: center; letter-spacing: 4px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 15px; margin: 60px 0 40px; font-size: 1.1rem; color: #000; }
+/* --- セクションタイトル --- */
+main { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+.section-title { text-align: center; margin: 120px 0 60px; }
+.en-title {
+    font-family: 'Playfair Display', serif; display: block;
+    font-size: 0.9rem; color: #3a86ff; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.3em; margin-bottom: 5px;
+}
+h2 { font-size: 1.8rem; margin: 0; font-weight: 700; letter-spacing: 0.1em; }
 
+/* --- PROFILE --- */
 .profile-card {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(10px);
-    padding: 40px 25px;
-    border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    text-align: center;
-    margin-bottom: 50px;
+    background: #fff; padding: 60px 40px; border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(149, 173, 203, 0.15);
+    text-align: center; margin-bottom: 80px; position: relative;
+    border: 1px solid rgba(255,255,255,0.8);
 }
+.profile-card p { font-size: 1.1rem; color: #444; margin: 0; }
 
-.profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-.profile-item { background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 12px; border: 1px solid #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
-.profile-item h3 { font-size: 0.85rem; margin: 0 0 10px; font-weight: bold; display: flex; align-items: center; gap: 8px; color: #000; }
+.profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; }
+.profile-item {
+    background: rgba(255, 255, 255, 0.6); padding: 40px 30px; border-radius: 20px;
+    transition: 0.4s; border: 1px solid rgba(255,255,255,0.5); text-align: center;
+}
+.profile-item:hover { transform: translateY(-10px); background: #fff; box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+.item-icon { font-size: 1.5rem; color: #3a86ff; margin-bottom: 15px; }
+.profile-item h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: #888; margin-bottom: 10px; }
+.profile-item p { font-weight: 700; font-size: 0.95rem; margin: 0; }
 
-/* --- WORKS & CONTACT --- */
-.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; }
-.video-item { display: flex; flex-direction: column; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: 0.3s; background: #fff; }
-.video-item:hover { transform: translateY(-5px); }
-.video-container { position: relative; width: 100%; padding-top: 56.25%; background: #000; cursor: pointer; }
-.thumb-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-.work-title { font-size: 0.9rem; font-weight: 800; color: #000; margin: 0; padding: 18px 15px; background-color: #fff; text-align: center; }
+/* --- WORKS --- */
+.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 50px; }
+.video-item { border-radius: 24px; overflow: hidden; background: #fff; box-shadow: 0 15px 40px rgba(0,0,0,0.08); transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+.video-item:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.12); }
+.video-container { position: relative; padding-top: 56.25%; background: #000; cursor: pointer; }
+.thumb-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: 0.6s; }
+.video-item:hover .thumb-img { transform: scale(1.08); opacity: 1; }
+.play-button-overlay {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 70px; height: 70px; background: rgba(255,255,255,0.9); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    color: #000; transition: 0.3s;
+}
+.video-item:hover .play-button-overlay { background: #3a86ff; color: #fff; transform: translate(-50%, -50%) scale(1.1); }
+.work-info { padding: 30px; }
+.work-info h3 { margin: 0 0 10px; font-size: 1.1rem; font-weight: 700; }
+.work-info p { margin: 0; font-size: 0.85rem; color: #888; }
 
-.contact-container { text-align: center; padding-bottom: 40px; }
-.contact-btns { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+/* --- CONTACT --- */
+.contact-container { background: #000; color: #fff; padding: 80px 40px; border-radius: 40px; text-align: center; margin-top: 50px; }
+.contact-desc { font-size: 1.1rem; opacity: 0.8; margin-bottom: 40px; }
+.contact-btns { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
 .contact-link-btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-    padding: 18px 35px; text-decoration: none; font-weight: bold; font-size: 0.95rem;
-    border-radius: 50px; transition: 0.3s; min-width: 260px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 22px 50px; text-decoration: none; border-radius: 100px;
+    font-weight: 700; font-size: 0.9rem; transition: 0.3s;
+    display: inline-flex; align-items: center; gap: 15px; letter-spacing: 0.1em;
 }
-.email-btn { background-color: #fff; color: #000; border: 1px solid #eee; }
-.x-btn { background-color: #000; color: #fff; }
+.email-btn { background: #fff; color: #000; }
+.email-btn:hover { background: #3a86ff; color: #fff; }
+.x-btn { border: 1px solid rgba(255,255,255,0.3); color: #fff; }
+.x-btn:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
 
-footer { text-align: center; padding: 60px 0 40px; color: #aaa; font-size: 0.7rem; }
+/* --- FOOTER --- */
+footer { padding: 100px 0 60px; text-align: center; }
+.footer-copy { font-size: 0.7rem; color: #aaa; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* --- モバイル対応 --- */
+@media (max-width: 768px) {
+    header h1 { font-size: 3rem; }
+    .video-grid { grid-template-columns: 1fr; }
+    .pc-only { display: none; }
+    .contact-link-btn { width: 100%; justify-content: center; }
+}
