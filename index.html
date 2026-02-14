@@ -54,12 +54,25 @@
             </div>
             <div class="video-grid">
                 <div class="video-item reveal">
+                    <div class="video-container" id="v_zuzu" onclick="loadVideo('v_zuzu', 'qOeuMysYVFI')">
+                        <img src="https://img.youtube.com/vi/qOeuMysYVFI/maxresdefault.jpg" alt="ズズちゃんねる!!!様" class="thumb-img">
+                        <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                    <div class="work-info">
+                        <h3>ズズちゃんねる!!!様</h3>
+                        <p>ゲーム実況編集 / VCRRUST切り抜き</p>
+                        <p class="work-sub-note">※サムネイル制作なし</p>
+                    </div>
+                </div>
+
+                <div class="video-item reveal">
                     <div class="video-container" id="v1" onclick="loadVideo('v1', 'k524WX5koA0')">
                         <img src="https://img.youtube.com/vi/k524WX5koA0/maxresdefault.jpg" alt="Axis様①" class="thumb-img">
                         <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
                     </div>
                     <div class="work-info"><h3>Axis様①</h3><p>ゲーム実況編集 / チャンネル運用</p></div>
                 </div>
+
                 <div class="video-item reveal">
                     <div class="video-container" id="v2" onclick="loadVideo('v2', 'qElZeEpV6O0')">
                         <img src="https://img.youtube.com/vi/qElZeEpV6O0/maxresdefault.jpg" alt="ゆふな様①" class="thumb-img">
@@ -67,6 +80,7 @@
                     </div>
                     <div class="work-info"><h3>ゆふな様①</h3><p>ゲーム実況編集 / チャンネル運用</p></div>
                 </div>
+
                 <div class="video-item reveal">
                     <div class="video-container" id="v3" onclick="loadVideo('v3', 'w_RoFztFqQY')">
                         <img src="https://img.youtube.com/vi/w_RoFztFqQY/maxresdefault.jpg" alt="シロイチ様" class="thumb-img">
@@ -136,7 +150,6 @@
     </footer>
 
     <script>
-        // 動画読み込み用
         function loadVideo(containerId, videoId) {
             const container = document.getElementById(containerId);
             if(container) {
@@ -145,16 +158,13 @@
             }
         }
 
-        // --- ふわっと現れるアニメーションの設定 ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
                 }
             });
-        }, {
-            threshold: 0.1 // 10%見えたら実行
-        });
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
