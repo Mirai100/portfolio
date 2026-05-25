@@ -7,6 +7,51 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* カテゴリー切り替えタブのスタイル */
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .tab-btn {
+            background: #222;
+            color: #fff;
+            border: 1px solid #444;
+            padding: 10px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .tab-btn:hover, .tab-btn.active {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+        /* コンテンツの表示・非表示制御 */
+        .video-grid-wrapper {
+            display: none;
+        }
+        .video-grid-wrapper.active {
+            display: block;
+        }
+        /* 縦型動画（Shorts）用の特別スタイル */
+        .vertical-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .vertical-grid .video-container {
+            aspect-ratio: 9 / 16 !important; /* 縦長比率に固定 */
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: #000;
+        }
+    </style>
 </head>
 <body>
 
@@ -52,51 +97,104 @@
                 <span class="en-title">Portfolios</span>
                 <h2>WORKS</h2>
             </div>
-            <div class="video-grid">
-                <div class="video-item reveal">
-                    <div class="video-container" id="v_zuzu" onclick="loadVideo('v_zuzu', 'qOeuMysYVFI')">
-                        <img src="https://img.youtube.com/vi/qOeuMysYVFI/maxresdefault.jpg" alt="ズズちゃんねる!!!様" class="thumb-img">
-                        <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
-                    </div>
-                    <div class="work-info">
-                        <h3>ズズちゃんねる!!!様</h3>
-                        <p>ゲーム実況編集 / VCRRUST切り抜き</p>
-                        <p class="work-sub-note">※サムネイル制作なし</p>
-                    </div>
-                </div>
 
-                <div class="video-item reveal">
-                    <div class="video-container" id="v1" onclick="loadVideo('v1', 'k524WX5koA0')">
-                        <img src="https://img.youtube.com/vi/k524WX5koA0/maxresdefault.jpg" alt="Axis様①" class="thumb-img">
-                        <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
-                    </div>
-                    <div class="work-info"><h3>Axis様①</h3><p>ゲーム実況編集 / チャンネル運用</p></div>
-                </div>
+            <div class="category-tabs reveal">
+                <button class="tab-btn active" onclick="switchCategory('horizontal')">横動画</button>
+                <button class="tab-btn" onclick="switchCategory('vertical')">縦動画</button>
+                <button class="tab-btn" onclick="switchCategory('mv')">MV</button>
+            </div>
 
-                <div class="video-item reveal">
-                    <div class="video-container" id="v2" onclick="loadVideo('v2', 'v1iDz_E2HLw')">
-                        <img src="https://img.youtube.com/vi/v1iDz_E2HLw/maxresdefault.jpg" alt="Axis様②" class="thumb-img">
-                        <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
-                   </div>
-                   <div class="work-info"><h3>Axis様②</h3><p>ゲーム実況編集 / チャンネル運用</p></div>
-                </div>
-
-                <div class="video-item reveal">
-                    <div class="video-container" id="v2" onclick="loadVideo('v2', 'qElZeEpV6O0')">
-                        <img src="https://img.youtube.com/vi/qElZeEpV6O0/maxresdefault.jpg" alt="ゆふな様①" class="thumb-img">
-                        <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
+            <div id="horizontal" class="video-grid-wrapper active">
+                <div class="video-grid">
+                    <div class="video-item reveal">
+                        <div class="video-container" id="v1" onclick="loadVideo('v1', 'k524WX5koA0')">
+                            <img src="https://img.youtube.com/vi/k524WX5koA0/maxresdefault.jpg" alt="Axis様①" class="thumb-img">
+                            <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="work-info"><h3>Axis様①</h3><p>ゲーム実狂編集 / チャンネル運用</p></div>
                     </div>
-                    <div class="work-info"><h3>ゆふな様①</h3><p>ゲーム実況編集 / チャンネル運用</p></div>
-                </div>
 
-                <div class="video-item reveal">
-                    <div class="video-container" id="v3" onclick="loadVideo('v3', 'w_RoFztFqQY')">
-                        <img src="https://img.youtube.com/vi/w_RoFztFqQY/maxresdefault.jpg" alt="シロイチ様" class="thumb-img">
-                        <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
+                    <div class="video-item reveal">
+                        <div class="video-container" id="v2" onclick="loadVideo('v2', 'v1iDz_E2HLw')">
+                            <img src="https://img.youtube.com/vi/v1iDz_E2HLw/maxresdefault.jpg" alt="Axis様②" class="thumb-img">
+                            <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
+                       </div>
+                       <div class="work-info"><h3>Axis様②</h3><p>ゲーム実況編集 / チャンネル運用</p></div>
                     </div>
-                    <div class="work-info"><h3>シロイチ様_歌ってみた</h3><p>MV / エフェクト・カラー編集</p></div>
+
+                    <div class="video-item reveal">
+                        <div class="video-container" id="v3" onclick="loadVideo('v3', 'XtW4p41w4DI')">
+                            <img src="https://img.youtube.com/vi/XtW4p41w4DI/maxresdefault.jpg" alt="Axis様③" class="thumb-img">
+                            <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
+                       </div>
+                       <div class="work-info"><h3>Axis様③</h3><p>ゲーム実況編集 / チャンネル運用</p></div>
+                    </div>
+
+                    <div class="video-item reveal">
+                        <div class="video-container" id="y1" onclick="loadVideo('y1', 'qElZeEpV6O0')">
+                            <img src="https://img.youtube.com/vi/qElZeEpV6O0/maxresdefault.jpg" alt="ゆふな様①" class="thumb-img">
+                            <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="work-info"><h3>ゆふな様①</h3><p>ゲーム実況編集 / チャンネル運用</p></div>
+                    </div>
+
+                    <div class="video-item reveal">
+                        <div class="video-container" id="y2" onclick="loadVideo('y2', 'HP7diiNySa8')">
+                             <img src="https://img.youtube.com/vi/HP7diiNySa8/maxresdefault.jpg" alt="ゆふな様②" class="thumb-img">
+                             <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="work-info"><h3>ゆふな様②</h3><p>ゲーム実況編集 / チャンネル運用</p></div>
+                    </div>
+
+                    <div class="video-item reveal">
+                        <div class="video-container" id="y3" onclick="loadVideo('y3', '4YI3Vk0SczY')">
+                             <img src="https://img.youtube.com/vi/4YI3Vk0SczY/maxresdefault.jpg" alt="ゆふな様③" class="thumb-img">
+                             <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="work-info"> <h3>ゆふな様③</h3><p>ゲーム実況編集 / チャンネル運用</p></div>
+                    </div>
+
+                    <div class="video-item reveal">
+                        <div class="video-container" id="v_zuzu" onclick="loadVideo('v_zuzu', 'qOeuMysYVFI')">
+                            <img src="https://img.youtube.com/vi/qOeuMysYVFI/maxresdefault.jpg" alt="ズズちゃんねる!!!様" class="thumb-img">
+                            <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="work-info">
+                            <h3>ズズちゃんねる!!!様</h3>
+                            <p>ゲーム実況編集 / VCRRUST切り抜き</p>
+                            <p class="work-sub-note">※サムネイル制作なし</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <div id="vertical" class="video-grid-wrapper">
+                <div class="vertical-grid">
+                    <div class="video-item reveal">
+                        <div class="video-container" id="short_axis1" onclick="loadVideo('short_axis1', 'b7bE7p8RVl0')">
+                            <img src="https://img.youtube.com/vi/b7bE7p8RVl0/maxresdefault.jpg" alt="Axis様_short動画" class="thumb-img">
+                            <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="work-info">
+                            <h3>Axis様_short動画</h3>
+                            <p>YouTube Shorts / ゲーム実況切り抜き</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mv" class="video-grid-wrapper">
+                <div class="video-grid">
+                    <div class="video-item reveal">
+                        <div class="video-container" id="mv_shiro1" onclick="loadVideo('mv_shiro1', 'w_RoFztFqQY')">
+                            <img src="https://img.youtube.com/vi/w_RoFztFqQY/maxresdefault.jpg" alt="シロイチ様" class="thumb-img">
+                            <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                        <div class="work-info"><h3>シロイチ様_歌ってみた</h3><p>MV / エフェクト・カラー編集</p></div>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
         <section id="price" class="page-section">
@@ -112,7 +210,7 @@
                     <h3>単発制作<span>Spot Plan</span></h3>
                     <ul>
                         <li><strong>縦型動画</strong> <span>¥3,000 〜 5,000</span></li>
-                        <li><strong>横型動画</strong> <span>¥10,000 〜</span></li>
+                        <li><strong>横型動画</strong> <span>¥8,000 〜</span></li>
                         <li><strong>MV制作</strong> <span>¥30,000 〜</span></li>
                     </ul>
                     <p class="card-note">※フルテロップ・BGM・サムネ込</p>
@@ -158,6 +256,7 @@
     </footer>
 
     <script>
+        // 動画読み込み用の関数
         function loadVideo(containerId, videoId) {
             const container = document.getElementById(containerId);
             if(container) {
@@ -166,6 +265,23 @@
             }
         }
 
+        // カテゴリー切り替え用の関数
+        function switchCategory(categoryId) {
+            // すべてのコンテンツを一旦非表示にする
+            document.querySelectorAll('.video-grid-wrapper').forEach(wrapper => {
+                wrapper.classList.remove('active');
+            });
+            // すべてのタブボタンの選択状態を解除
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // 選択されたコンテンツとボタンを有効化
+            document.getElementById(categoryId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // スクロール時のふわっと表示用の処理
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
