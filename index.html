@@ -7,51 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        /* カテゴリー切り替えタブのスタイル */
-        .category-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        .tab-btn {
-            background: #222;
-            color: #fff;
-            border: 1px solid #444;
-            padding: 10px 24px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-        .tab-btn:hover, .tab-btn.active {
-            background: #fff;
-            color: #000;
-            border-color: #fff;
-        }
-        /* コンテンツの表示・非表示制御 */
-        .video-grid-wrapper {
-            display: none;
-        }
-        .video-grid-wrapper.active {
-            display: block;
-        }
-        /* 縦型動画（Shorts）用の特別スタイル */
-        .vertical-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        .vertical-grid .video-container {
-            aspect-ratio: 9 / 16 !important; /* 縦長比率に固定 */
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            background: #000;
-        }
-    </style>
 </head>
 <body>
 
@@ -64,11 +19,19 @@
         </ul>
     </nav>
 
-    <header>
-        <div class="header-content reveal">
-            <h1>Mirai<span>Video Creator</span></h1>
-            <div class="header-icon">
-                <img src="profile-icon.png" alt="Mirai's Icon" onerror="this.style.display='none'">
+    <header class="hero-header">
+        <div class="header-container reveal">
+            <!-- 左側：テキストエリア -->
+            <div class="header-text-side">
+                <p class="sub-caption"><span class="blue-dot">●</span> VIDEO EDITOR / MOTION</p>
+                <h1 class="hero-title">Mira<span class="highlight-i">i</span></h1>
+                <p class="hero-description">
+                    単発の制作からチャンネルの運用まで対応。企画の意図を汲み取り、伝わる編集で仕上げます。
+                </p>
+            </div>
+            <!-- 右側：アイコンエリア -->
+            <div class="header-icon-side">
+                <img src="profile-icon.jpg" alt="Mirai's Icon" class="profile-img" onerror="this.style.display='none'">
             </div>
         </div>
     </header>
@@ -111,7 +74,7 @@
                             <img src="https://img.youtube.com/vi/k524WX5koA0/maxresdefault.jpg" alt="Axis様①" class="thumb-img">
                             <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
                         </div>
-                        <div class="work-info"><h3>Axis様①</h3><p>ゲーム実狂編集 / チャンネル運用</p></div>
+                        <div class="work-info"><h3>Axis様①</h3><p>ゲーム実況編集 / チャンネル運用</p></div>
                     </div>
 
                     <div class="video-item reveal">
@@ -160,7 +123,7 @@
                             <div class="play-button-overlay"><i class="fa-solid fa-play"></i></div>
                         </div>
                         <div class="work-info">
-                            <i3>ズズちゃんねる!!!様</h3>
+                            <h3>ズズちゃんねる!!!様</h3>
                             <p>ゲーム実況編集 / VCRRUST切り抜き</p>
                             <p class="work-sub-note">※サムネイル制作なし</p>
                         </div>
@@ -267,7 +230,6 @@
     </footer>
 
     <script>
-        // 動画読み込み用の関数
         function loadVideo(containerId, videoId) {
             const container = document.getElementById(containerId);
             if(container) {
@@ -276,23 +238,18 @@
             }
         }
 
-        // カテゴリー切り替え用の関数
         function switchCategory(categoryId) {
-            // すべてのコンテンツを一旦非表示にする
             document.querySelectorAll('.video-grid-wrapper').forEach(wrapper => {
                 wrapper.classList.remove('active');
             });
-            // すべてのタブボタンの選択状態を解除
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
 
-            // 選択されたコンテンツとボタンを有効化
             document.getElementById(categoryId).classList.add('active');
             event.currentTarget.classList.add('active');
         }
 
-        // スクロール時のふわっと表示用の処理
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
